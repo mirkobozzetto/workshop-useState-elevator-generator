@@ -5,6 +5,7 @@ import { ChangeEvent, useState } from "react";
 
 const Menu = () => {
   const [image, setImage] = useState<Image | null>(null);
+  // ici on utilise useState pour déclarer une variable d'état image qui est initialisée à null
   const [settings, setSettings] = useState<Settings>({
     padding: 0,
     borderRadius: 0,
@@ -12,28 +13,42 @@ const Menu = () => {
   });
 
   const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
+    // ici on déclare une fonction handleImageUpload qui prend un argument e de type ChangeEvent<HTMLInputElement>
     const file = e.target.files?.[0];
+    // file est une variable qui contient le premier fichier de la liste des fichiers sélectionnés par l'utilisateur
     if (file) {
+      // si file est défini
       const reader = new FileReader();
+      // alors on initialise une nouvelle instance de FileReader
       reader.onload = () => {
+        // on définit une fonction qui sera exécutée lorsque le chargement du fichier sera terminé
         const img = new Image();
+        // on initialise une nouvelle instance de l'objet Image
         img.onload = () => {
+          // lorsque l'image est chargée
           setImage({
             src: reader.result as string,
             width: img.width,
             height: img.height,
+            // on met à jour l'état de l'image avec les propriétés src, width et height
           });
         };
         img.src = reader.result as string;
+        // on met à jour la propriété src de l'objet Image avec la valeur de reader.result
       };
       reader.readAsDataURL(file);
+      // on lit le contenu du fichier sous forme d'URL de données
     }
   };
 
   const handleSettingsChange = (key: keyof Settings, value: number) => {
+    // ici on déclare une fonction handleSettingsChange qui prend deux arguments: key de type keyof Settings et value de type number
     setSettings((prevSettings) => ({
+      // afin de mettre à jour l'état des paramètres, on utilise la fonction setSettings qui prend une fonction en argument
       ...prevSettings,
+      // le spread copie les propriétés de l'objet prevSettings
       [key]: value,
+      // key est utilisé comme clé pour mettre à jour la valeur de la propriété correspondante
     }));
   };
 
