@@ -36,6 +36,12 @@ const Menu = () => {
         img.src = reader.result as string;
         // on met à jour la propriété src de l'objet Image avec la valeur de reader.result
       };
+
+      // reader.onloadend = function () {
+      //   console.log(reader.result);
+      // };
+      // // le console.log affiche le résultat de la lecture du fichier
+
       reader.readAsDataURL(file);
       // on lit le contenu du fichier sous forme d'URL de données
     }
