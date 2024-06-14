@@ -2,6 +2,8 @@
 
 import type { ImageProps, Settings } from "@/app/types";
 import { ChangeEvent, useState } from "react";
+import { DownLoadButton } from "./DownLoadButton";
+import ImagePreview from "./ImagePreview";
 
 const Menu = () => {
   const [image, setImage] = useState<ImageProps | null>(null);
@@ -30,6 +32,7 @@ const Menu = () => {
             src: reader.result as string,
             width: img.width,
             height: img.height,
+            alt: file.name,
             // on met à jour l'état de l'image avec les propriétés src, width et height
           });
         };
@@ -114,6 +117,10 @@ const Menu = () => {
           className="w-[350px] h-3 slider slider-primary"
         />
       </label>
+      <ImagePreview image={image} settings={settings} />
+      <div className="mt-6">
+        <DownLoadButton image={image} settings={settings} />
+      </div>
     </div>
   );
 };
