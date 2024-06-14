@@ -48,8 +48,3 @@ pnpm dev
 
 Les contributions sont les bienvenues ! Si vous souhaitez améliorer ce projet, n'hésitez pas à ouvrir une issue ou à soumettre une pull request.
 
-## Licence
-
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus d'informations.
-
-N'hésitez pas à personnaliser ce README en fonction des spécificités de votre projet et à ajouter d'autres sections si nécessaire (par exemple, une section "Utilisation" pour expliquer comment utiliser l'application).
