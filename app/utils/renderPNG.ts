@@ -1,4 +1,5 @@
 import type { ImageProps, Settings } from "../types";
+
 export const renderPNG = async ({
   image,
   settings,
@@ -18,7 +19,7 @@ export const renderPNG = async ({
   ctx.drawImage(img, settings.padding, settings.padding);
 
   // Appliquer les styles de l'aperçu
-  ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
+  ctx.shadowColor = "rgba(0, 0, 0, 0.01)";
   ctx.shadowBlur = settings.shadow;
   ctx.lineWidth = settings.padding * 2;
   ctx.strokeStyle = "transparent";

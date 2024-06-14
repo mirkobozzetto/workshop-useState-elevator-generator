@@ -1,5 +1,5 @@
-import Image, { ImageProps } from "next/image";
-import type { Settings } from "../types";
+import Image from "next/image";
+import type { ImageProps, Settings } from "../types";
 
 type ImagePreviewProps = {
   image: ImageProps | null;
