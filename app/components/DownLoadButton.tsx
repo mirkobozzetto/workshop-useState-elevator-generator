@@ -8,7 +8,7 @@ export const DownLoadButton = ({ image, settings }: DownLoadButtonProps) => {
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = "image.png";
+      link.download = image.alt;
       link.click();
       // Révoquer l'URL pour libérer la mémoire
       URL.revokeObjectURL(url);
