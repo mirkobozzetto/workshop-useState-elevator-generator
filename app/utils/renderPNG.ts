@@ -31,14 +31,16 @@ export const renderPNG = async ({
 
   // Appliquer le border-radius
   ctx.globalCompositeOperation = "destination-in";
+  // globalCompositeOperation: Définit comment les pixels source sont combinés avec les pixels de destination.
+  // destination-in: Les pixels de destination sont remplacés par les pixels source.
   ctx.beginPath();
   ctx.roundRect(
     settings.padding,
     settings.padding,
     image.width - settings.padding * 2,
     image.height - settings.padding * 2,
-    // settings.borderRadius
-    Math.min(settings.borderRadius, Math.min(image.width, image.height) / 2)
+    settings.borderRadius
+    // Math.min(settings.borderRadius, Math.min(image.width, image.height) / 2)
   );
   ctx.closePath();
   ctx.fill();

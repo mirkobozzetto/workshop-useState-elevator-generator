@@ -62,64 +62,68 @@ const Menu = () => {
   };
 
   return (
-    <div className="flex flex-col m-6">
-      <h1 className="font-bold text-2xl">Settings</h1>
-      <label className="relative my-3 w-[350px] h-8 text-xs cursor-pointer file-input file-input-primary">
-        <span className="absolute inset-0 flex justify-center items-center">
-          Choisir un fichier
-        </span>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageUpload}
-          className="opacity-0"
-        />
-      </label>
+    <div className="gap-6 grid grid-cols-2 m-6">
+      <div className="flex flex-col m-6">
+        <h1 className="font-bold text-2xl">Settings</h1>
+        <label className="relative my-3 w-[350px] h-8 text-xs cursor-pointer file-input file-input-primary">
+          <span className="absolute inset-0 flex justify-center items-center">
+            Choisir un fichier
+          </span>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            className="opacity-0"
+          />
+        </label>
 
-      <label className="flex flex-col my-3">
-        <span>Padding :</span>
-        <input
-          type="range"
-          min={0}
-          max={100}
-          value={settings.padding}
-          onChange={(e) =>
-            handleSettingsChange("padding", Number(e.target.value))
-          }
-          className="w-[350px] slider slider-primary"
-        />
-      </label>
+        <label className="flex flex-col my-3">
+          <span>Padding :</span>
+          <input
+            type="range"
+            min={0}
+            max={100}
+            value={settings.padding}
+            onChange={(e) =>
+              handleSettingsChange("padding", Number(e.target.value))
+            }
+            className="w-[350px] slider slider-primary"
+          />
+        </label>
 
-      <label className="flex flex-col my-3">
-        <span>Border Radius :</span>
-        <input
-          type="range"
-          min={0}
-          max={1000}
-          value={settings.borderRadius}
-          onChange={(e) =>
-            handleSettingsChange("borderRadius", Number(e.target.value))
-          }
-          className="w-[350px] h-3 slider slider-primary"
-        />
-      </label>
+        <label className="flex flex-col my-3">
+          <span>Border Radius :</span>
+          <input
+            type="range"
+            min={0}
+            max={1000}
+            value={settings.borderRadius}
+            onChange={(e) =>
+              handleSettingsChange("borderRadius", Number(e.target.value))
+            }
+            className="w-[350px] h-3 slider slider-primary"
+          />
+        </label>
 
-      <label className="flex flex-col my-3">
-        <span>Shadow :</span>
-        <input
-          type="range"
-          min={0}
-          max={100}
-          value={settings.shadow}
-          onChange={(e) =>
-            handleSettingsChange("shadow", Number(e.target.value))
-          }
-          className="w-[350px] h-3 slider slider-primary"
-        />
-      </label>
-      <ImagePreview image={image} settings={settings} />
-      <div className="mt-6">
-        <DownLoadButton image={image} settings={settings} />
+        <label className="flex flex-col my-3">
+          <span>Shadow :</span>
+          <input
+            type="range"
+            min={0}
+            max={100}
+            value={settings.shadow}
+            onChange={(e) =>
+              handleSettingsChange("shadow", Number(e.target.value))
+            }
+            className="w-[350px] h-3 slider slider-primary"
+          />
+        </label>
+        <div className="mt-6">
+          <DownLoadButton image={image} settings={settings} />
+        </div>
+      </div>
+      <div className="flex flex-col justify-center items-center">
+        <ImagePreview image={image} settings={settings} />
       </div>
     </div>
   );
