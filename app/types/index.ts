@@ -9,3 +9,8 @@ export type Settings = {
   borderRadius: number;
   shadow: number;
 };
+
+export type DownLoadButtonProps = {
+  image: Image | null;
+  settings: Settings;
+};
