@@ -1,10 +1,10 @@
 "use client";
 
-import type { Image, Settings } from "@/app/types";
+import type { ImageProps, Settings } from "@/app/types";
 import { ChangeEvent, useState } from "react";
 
 const Menu = () => {
-  const [image, setImage] = useState<Image | null>(null);
+  const [image, setImage] = useState<ImageProps | null>(null);
   // ici on utilise useState pour déclarer une variable d'état image qui est initialisée à null
   const [settings, setSettings] = useState<Settings>({
     padding: 0,

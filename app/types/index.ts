@@ -1,4 +1,4 @@
-export type Image = {
+export type ImageProps = {
   src: string;
   width: number;
   height: number;
@@ -11,6 +11,6 @@ export type Settings = {
 };
 
 export type DownLoadButtonProps = {
-  image: Image | null;
+  image: ImageProps | null;
   settings: Settings;
 };
