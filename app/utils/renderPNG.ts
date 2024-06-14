@@ -1,22 +1,26 @@
-import type { Image, Settings } from "../types";
+import type { ImageProps, Settings } from "../types";
 
 export const renderPNG = async ({
   image,
   settings,
 }: {
-  image: Image;
+  image: ImageProps;
   settings: Settings;
 }) => {
+  // Création d'un canvas
   const canvas = document.createElement("canvas");
   canvas.width = image.width;
   canvas.height = image.height;
+  // Création d'un contexte 2D obligatoire pour dessiner sur le canvas
   const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
   ctx.drawImage(
+    // Création d'une image à partir de l'URL de l'image
     await createImageBitmap(await fetch(image.src).then((res) => res.blob())),
     0,
     0
   );
+
   ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
   ctx.shadowBlur = settings.shadow;
   ctx.lineWidth = settings.padding;
