@@ -2,7 +2,6 @@ import type { DownLoadButtonProps } from "../types";
 import { renderPNG } from "../utils/renderPNG";
 
 export const DownLoadButton = ({ image, settings }: DownLoadButtonProps) => {
-  // cela va permettre de télécharger l'image
   const handleDownload = async () => {
     if (image) {
       const { blob } = await renderPNG({ image, settings });
@@ -11,6 +10,7 @@ export const DownLoadButton = ({ image, settings }: DownLoadButtonProps) => {
       link.href = url;
       link.download = "image.png";
       link.click();
+      // Révoquer l'URL pour libérer la mémoire
       URL.revokeObjectURL(url);
     }
   };
