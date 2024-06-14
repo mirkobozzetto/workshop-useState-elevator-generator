@@ -1,5 +1,4 @@
 import type { ImageProps, Settings } from "../types";
-
 export const renderPNG = async ({
   image,
   settings,
@@ -7,26 +6,44 @@ export const renderPNG = async ({
   image: ImageProps;
   settings: Settings;
 }) => {
-  // Création d'un canvas
   const canvas = document.createElement("canvas");
   canvas.width = image.width;
   canvas.height = image.height;
-  // Création d'un contexte 2D obligatoire pour dessiner sur le canvas
   const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
-  ctx.drawImage(
-    // Création d'une image à partir de l'URL de l'image
-    await createImageBitmap(await fetch(image.src).then((res) => res.blob())),
-    0,
-    0
+  // Dessiner l'image sur le canvas
+  const img = await createImageBitmap(
+    await fetch(image.src).then((res) => res.blob())
   );
+  ctx.drawImage(img, settings.padding, settings.padding);
 
+  // Appliquer les styles de l'aperçu
   ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
   ctx.shadowBlur = settings.shadow;
-  ctx.lineWidth = settings.padding;
-  ctx.strokeRect(0, 0, image.width, image.height);
+  ctx.lineWidth = settings.padding * 2;
+  ctx.strokeStyle = "transparent";
+  ctx.strokeRect(
+    settings.padding,
+    settings.padding,
+    image.width - settings.padding * 2,
+    image.height - settings.padding * 2
+  );
 
-  // Un Blob (Binary Large OBject) est un objet utilisé pour représenter des données qui ne sont pas nécessairement dans un format JavaScript natif
+  // Appliquer le border-radius
+  ctx.globalCompositeOperation = "destination-in";
+  ctx.beginPath();
+  ctx.roundRect(
+    settings.padding,
+    settings.padding,
+    image.width - settings.padding * 2,
+    image.height - settings.padding * 2,
+    // settings.borderRadius
+    Math.min(settings.borderRadius, Math.min(image.width, image.height) / 2)
+  );
+  ctx.closePath();
+  ctx.fill();
+
+  // Retourner l'objet avec la propriété blob
   return {
     blob: await new Promise<Blob>((resolve) =>
       canvas.toBlob((blob) => resolve(blob!), "image/png")

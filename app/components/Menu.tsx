@@ -81,7 +81,7 @@ const Menu = () => {
         <input
           type="range"
           min={0}
-          max={99}
+          max={100}
           value={settings.padding}
           onChange={(e) =>
             handleSettingsChange("padding", Number(e.target.value))
@@ -95,7 +95,7 @@ const Menu = () => {
         <input
           type="range"
           min={0}
-          max={99}
+          max={1000}
           value={settings.borderRadius}
           onChange={(e) =>
             handleSettingsChange("borderRadius", Number(e.target.value))
@@ -109,7 +109,7 @@ const Menu = () => {
         <input
           type="range"
           min={0}
-          max={99}
+          max={100}
           value={settings.shadow}
           onChange={(e) =>
             handleSettingsChange("shadow", Number(e.target.value))
