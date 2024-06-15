@@ -96,7 +96,7 @@ const Menu = () => {
           <input
             type="range"
             min={0}
-            max={1000}
+            max={360}
             value={settings.borderRadius}
             onChange={(e) =>
               handleSettingsChange("borderRadius", Number(e.target.value))
